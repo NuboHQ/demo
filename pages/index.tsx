@@ -1,7 +1,13 @@
 import Head from 'next/head';
 import Map from '@/components/map/Map';
 import { GetServerSideProps } from 'next';
-import { getRegion, loadConfig, NuboConfig, Region } from '@/lib/config';
+import {
+  getPolicyRegionId,
+  getRegion,
+  loadConfig,
+  NuboConfig,
+  Region,
+} from '@/lib/config';
 import Header from '@/components/header/Header';
 import Info from '@/components/info/Info';
 
@@ -32,7 +38,8 @@ export default function Home({ config, currentRegion }: Props) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const config = loadConfig();
-  const currentRegion = getRegion(process.env.NUBO_REGION || 'unknown');
+  const id = getPolicyRegionId();
+  const currentRegion = getRegion(id);
 
   return {
     props: {

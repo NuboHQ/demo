@@ -12,7 +12,7 @@ interface Props {
 const Map: FC<Props> = ({ config, currentRegion }) => {
   const getRegionProps = (id: string) => {
     const className = classNames('');
-    const stroke = id === currentRegion.id ? '#209CE1' : '#4E5064';
+    const stroke = id === currentRegion.id ? '#00A4FF' : '#4E5064';
 
     return {
       className,
