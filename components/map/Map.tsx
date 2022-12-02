@@ -1,18 +1,21 @@
 import React, { FC } from 'react';
 import { motion } from 'framer-motion';
 import World from './World';
-import { Region, Regions } from '@/lib/regions';
+import { NuboConfig, Region, Regions } from '@/lib/config';
+import classNames from 'classnames';
 
 interface Props {
-  regions: Regions;
+  config: NuboConfig;
   currentRegion: Region;
 }
 
-const Map: FC<Props> = ({ regions, currentRegion }) => {
+const Map: FC<Props> = ({ config, currentRegion }) => {
   const getRegionProps = (id: string) => {
+    const className = classNames('');
     const stroke = id === currentRegion.id ? '#209CE1' : '#4E5064';
 
     return {
+      className,
       stroke,
     };
   };

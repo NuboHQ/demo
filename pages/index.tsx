@@ -1,34 +1,42 @@
 import Head from 'next/head';
 import Map from '@/components/map/Map';
 import { GetServerSideProps } from 'next';
-import { getRegion, loadRegions, Region, Regions } from '@/lib/regions';
+import { getRegion, loadConfig, NuboConfig, Region } from '@/lib/config';
+import Header from '@/components/header/Header';
+import Info from '@/components/info/Info';
 
 interface Props {
-  regions: Regions;
+  config: NuboConfig;
   currentRegion: Region;
 }
 
-export default function Home({ regions, currentRegion }: Props) {
+export default function Home({ config, currentRegion }: Props) {
   return (
-    <div>
+    <>
       <Head>
         <title>Nubo Demo</title>
         <meta name="description" content="Nubo demo" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Map regions={regions} currentRegion={currentRegion} />
-    </div>
+      <Header />
+
+      <Info config={config} region={currentRegion} />
+
+      <div className="py-10 lg:py-20">
+        <Map config={config} currentRegion={currentRegion} />
+      </div>
+    </>
   );
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const regions = loadRegions();
+  const config = loadConfig();
   const currentRegion = getRegion(process.env.NUBO_REGION || 'unknown');
 
   return {
     props: {
-      regions,
+      config,
       currentRegion,
     },
   };

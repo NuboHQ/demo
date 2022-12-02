@@ -1,0 +1,71 @@
+{
+  "policy": {
+    "id": "GDPR",
+    "name": "General Data Protection Regulation"
+  },
+  "regions": {
+    "unknown": {
+      "id": "unknown",
+      "location": "Unknown",
+      "country": "Unknown",
+      "flag": "UNKNOWN",
+      "active": true
+    },
+    "us-west-california": {
+      "id": "us-west-california",
+      "location": "California",
+      "country": "United States",
+      "flag": "US",
+      "active": true
+    },
+    "us-east-virginia": {
+      "id": "us-west-virginia",
+      "location": "Virginia",
+      "country": "United States",
+      "flag": "US",
+      "active": true
+    },
+    "south-america-east-sao-paulo": {
+      "id": "south-america-east-sao-paulo",
+      "location": "São Paulo",
+      "country": "Brazil",
+      "flag": "BR",
+      "active": true
+    },
+    "europe-west-london": {
+      "id": "europe-west-london",
+      "location": "London",
+      "country": "United Kingdom",
+      "flag": "GB",
+      "active": true
+    },
+    "europe-west-milan": {
+      "id": "europe-west-milan",
+      "location": "Milan",
+      "country": "Italy",
+      "flag": "IT",
+      "active": true
+    },
+    "asia-south-mumbai": {
+      "id": "asia-south-mumbai",
+      "location": "Mumbai",
+      "country": "India",
+      "flag": "IN",
+      "active": true
+    },
+    "asia-northeast-tokyo": {
+      "id": "asia-northeast-tokyo",
+      "location": "Tokyo",
+      "country": "Japan",
+      "flag": "JP",
+      "active": true
+    },
+    "australia-southeast-sydney": {
+      "id": "australia-southeast-sydney",
+      "location": "Sydney",
+      "country": "Australia",
+      "flag": "AU",
+      "active": true
+    }
+  }
+}
