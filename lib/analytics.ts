@@ -52,6 +52,7 @@ export const getBrowserFromRequest = (req: NextIncomingMessage) => {
 };
 
 export const getIpFromRequest = (req: NextIncomingMessage) => {
+  console.log({ headers: req.headers });
   const xForwardedFor =
     (req.headers['x-forwarded-for'] as string) || '88.98.203.209';
 
