@@ -1,11 +1,11 @@
 import { readFileSync } from 'fs';
 
-export type NuboConfig = {
-  policy: NuboConfigPolicy | null;
+export type Config = {
+  policy: Policy;
   regions: Regions;
 };
 
-export type NuboConfigPolicy = {
+export type Policy = {
   id: string;
   name: string;
 };
@@ -20,7 +20,10 @@ export type Region = {
 
 export type Regions = { [id: Region['id']]: Region };
 
-export let config: NuboConfig = { policy: null, regions: {} };
+export let config: Config = {
+  policy: { id: 'ALL', name: 'All regions' },
+  regions: {},
+};
 
 export const loadConfig = () => {
   const configString = readFileSync('nubo-config.json', 'utf-8');
@@ -34,7 +37,7 @@ export const getRegion = (id: string) => {
 };
 
 export const getPolicyRegionId = () => {
-  if (!config.policy) {
+  if (config.policy.id === 'ALL') {
     return process.env.NUBO_REGION || 'unknown';
   }
 

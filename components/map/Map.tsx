@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { motion } from 'framer-motion';
 import World from './World';
-import { NuboConfig, Region, Regions } from '@/lib/config';
+import { Config, Region, Regions } from '@/lib/config';
 import classNames from 'classnames';
 
 interface Props {
   className?: string;
-  config: NuboConfig;
+  config: Config;
   currentRegion: Region;
 }
 

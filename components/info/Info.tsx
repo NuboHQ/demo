@@ -1,8 +1,8 @@
-import { NuboConfig, Region } from '@/lib/config';
+import { Config, Region } from '@/lib/config';
 import React, { FC } from 'react';
 
 interface Props {
-  config: NuboConfig;
+  config: Config;
   region: Region;
 }
 
@@ -28,7 +28,7 @@ const Info: FC<Props> = ({ config, region }) => {
           </div>
         </div>
 
-        {!!config.policy && (
+        {config.policy.id !== 'ALL' && (
           <div className="grid gap-2 p-10">
             <div className="uppercase text-xs text-slate-500">
               Policy applied

@@ -5,7 +5,7 @@ import {
   getPolicyRegionId,
   getRegion,
   loadConfig,
-  NuboConfig,
+  Config,
   Region,
 } from '@/lib/config';
 import Header from '@/components/header/Header';
@@ -13,7 +13,7 @@ import Info from '@/components/info/Info';
 import { Browser, track } from '@/lib/analytics';
 
 interface Props {
-  config: NuboConfig;
+  config: Config;
   currentRegion: Region;
 }
 
