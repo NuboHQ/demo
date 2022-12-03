@@ -5,11 +5,12 @@ import { NuboConfig, Region, Regions } from '@/lib/config';
 import classNames from 'classnames';
 
 interface Props {
+  className?: string;
   config: NuboConfig;
   currentRegion: Region;
 }
 
-const Map: FC<Props> = ({ config, currentRegion }) => {
+const Map: FC<Props> = ({ className, config, currentRegion }) => {
   const getRegionProps = (id: string) => {
     const className = classNames('');
     const stroke = id === currentRegion.id ? '#00A4FF' : '#4E5064';
@@ -22,8 +23,7 @@ const Map: FC<Props> = ({ config, currentRegion }) => {
 
   return (
     <svg
-      className="m-auto"
-      width="100%"
+      className={className}
       viewBox="0 0 906 412"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

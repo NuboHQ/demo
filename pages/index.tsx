@@ -26,13 +26,15 @@ export default function Home({ config, currentRegion }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
+      <Header className="fixed z-50" />
+
+      <Map
+        className="top-32 pt-20 lg:fixed lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2"
+        config={config}
+        currentRegion={currentRegion}
+      />
 
       <Info config={config} region={currentRegion} />
-
-      <div className="py-10 lg:py-20">
-        <Map config={config} currentRegion={currentRegion} />
-      </div>
     </>
   );
 }

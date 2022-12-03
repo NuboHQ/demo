@@ -1,17 +1,8 @@
 import Head from 'next/head';
-import Map from '@/components/map/Map';
 import superjson from 'superjson';
 import { GetServerSideProps } from 'next';
-import {
-  getPolicyRegionId,
-  getRegion,
-  loadConfig,
-  NuboConfig,
-  Region,
-} from '@/lib/config';
 import Header from '@/components/header/Header';
-import Info from '@/components/info/Info';
-import { Browser, track } from '@/lib/analytics';
+import { Browser } from '@/lib/analytics';
 import { Request } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 
@@ -32,12 +23,12 @@ export default function Analytics({ requestsString }: Props) {
 
       <Header />
 
-      <div className="py-10 lg:py-20 text-white">
+      <div className="grid gap-4 py-10 lg:py-20 text-white max-w-2xl m-auto divide-y divide-slate-800">
         {requests.map((request) => {
           const browser = request.browser as Browser;
 
           return (
-            <div key={request.id}>
+            <div key={request.id} className="py-4 pt-6">
               <img className="w-10" src={browser.image} alt={browser.name} />
             </div>
           );
@@ -48,7 +39,12 @@ export default function Analytics({ requestsString }: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const requests = await prisma.request.findMany({ take: 100 });
+  const requests = await prisma.request.findMany({
+    take: 100,
+    orderBy: {
+      created: 'desc',
+    },
+  });
 
   return {
     props: {

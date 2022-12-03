@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Logo from '@/components/logo/Logo';
+import classNames from 'classnames';
 
-const Header = () => {
+interface Props {
+  className?: string;
+}
+
+const Header: FC<Props> = ({ className }) => {
   return (
-    <header className="p-10 md:p-14 lg:p-20">
+    <header className={classNames('p-10 md:p-14', className)}>
       <Logo />
     </header>
   );
