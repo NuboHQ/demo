@@ -21,7 +21,7 @@ export type Region = {
 export type Regions = { [id: Region['id']]: Region };
 
 export let config: Config = {
-  policy: { id: 'ALL', name: 'All regions' },
+  policy: { id: 'all', name: 'All regions' },
   regions: {},
 };
 
@@ -37,19 +37,19 @@ export const getRegion = (id: string) => {
 };
 
 export const getPolicyRegionId = () => {
-  if (config.policy.id === 'ALL') {
+  if (config.policy.id === 'all') {
     return process.env.NUBO_REGION || 'unknown';
   }
 
-  if (config.policy.id === 'GDPR') {
+  if (config.policy.id === 'gdpr') {
     return 'europe-west-milan';
   }
 
-  if (config.policy.id === 'CCPA') {
+  if (config.policy.id === 'ccpa') {
     return 'us-west-california';
   }
 
-  if (config.policy.id === 'LGPD') {
+  if (config.policy.id === 'lgpd') {
     return 'south-america-east-sao-paulo';
   }
 

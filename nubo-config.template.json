@@ -1,16 +1,9 @@
 {
   "policy": {
-    "id": "GDPR",
+    "id": "gdpr",
     "name": "General Data Protection Regulation"
   },
   "regions": {
-    "unknown": {
-      "id": "unknown",
-      "location": "Unknown",
-      "country": "Unknown",
-      "flag": "UNKNOWN",
-      "active": true
-    },
     "us-west-california": {
       "id": "us-west-california",
       "location": "California",

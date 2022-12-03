@@ -28,13 +28,13 @@ const Info: FC<Props> = ({ config, region }) => {
           </div>
         </div>
 
-        {config.policy.id !== 'ALL' && (
+        {config.policy.id !== 'all' && (
           <div className="grid gap-2 p-10">
             <div className="uppercase text-xs text-slate-500">
               Policy applied
             </div>
             <div>
-              {config.policy.name} ({config.policy.id})
+              {config.policy.name} ({config.policy.id.toUpperCase()})
             </div>
           </div>
         )}
