@@ -10,9 +10,14 @@ export type Browser = {
 };
 
 export const track = async (req: NextIncomingMessage) => {
+  console.log('=========');
   const ip = getIpFromRequest(req);
+  console.log({ ip });
   const geo = getGeoFromIp(ip);
+  console.log({ geo });
   const browser = getBrowserFromRequest(req);
+  console.log({ geo });
+  console.log('=========');
 
   if (!geo || !browser) return;
 
@@ -41,6 +46,7 @@ export const getBrowserFromRequest = (req: NextIncomingMessage) => {
 
     return browser;
   } catch (error) {
+    console.log('error', error);
     return null;
   }
 };
