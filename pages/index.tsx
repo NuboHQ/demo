@@ -4,7 +4,7 @@ import { GetServerSideProps } from 'next';
 import {
   getPolicyRegionId,
   getRegion,
-  loadConfig,
+  getConfig,
   Config,
   Region,
 } from '@/lib/config';
@@ -41,9 +41,9 @@ export default function Home({ config, currentRegion }: Props) {
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   track(req);
-  const config = loadConfig();
-  const id = getPolicyRegionId();
-  const currentRegion = getRegion(id);
+  const config = await getConfig();
+  const id = getPolicyRegionId(config);
+  const currentRegion = getRegion(config, id);
 
   return {
     props: {

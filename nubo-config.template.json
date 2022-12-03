@@ -1,4 +1,5 @@
 {
+  "id": "config",
   "policy": {
     "id": "gdpr",
     "name": "General Data Protection Regulation"

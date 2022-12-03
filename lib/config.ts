@@ -1,6 +1,8 @@
 import { readFileSync } from 'fs';
+import { prisma } from './prisma';
 
 export type Config = {
+  id: string;
   policy: Policy;
   regions: Regions;
 };
@@ -20,23 +22,19 @@ export type Region = {
 
 export type Regions = { [id: Region['id']]: Region };
 
-export let config: Config = {
-  policy: { id: 'all', name: 'All regions' },
-  regions: {},
+export const getConfig = async () => {
+  const config = await prisma.config.findFirst({
+    where: { id: 'config' },
+  });
+
+  return config as Config;
 };
 
-export const loadConfig = () => {
-  const configString = readFileSync('nubo-config.json', 'utf-8');
-  config = JSON.parse(configString);
-
-  return config;
-};
-
-export const getRegion = (id: string) => {
+export const getRegion = (config: Config, id: string) => {
   return config.regions[id];
 };
 
-export const getPolicyRegionId = () => {
+export const getPolicyRegionId = (config: Config) => {
   if (config.policy.id === 'all') {
     return process.env.NUBO_REGION || 'unknown';
   }

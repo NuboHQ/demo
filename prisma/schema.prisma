@@ -17,3 +17,11 @@ model Request {
 
   @@map("requests")
 }
+
+model Config {
+  id      String @id @default(cuid())
+  policy  Json
+  regions Json
+
+  @@map("config")
+}
