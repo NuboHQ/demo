@@ -23,6 +23,7 @@
     "fontawesome-user-agent": "^0.2.1",
     "framer-motion": "^7.6.18",
     "geoip-lite": "^1.4.6",
+    "moment": "^2.29.4",
     "next": "13.0.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
