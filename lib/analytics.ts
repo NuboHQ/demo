@@ -1,6 +1,7 @@
 import { lookup } from 'geoip-lite';
 import { faUserAgent } from 'fontawesome-user-agent';
 import { NextIncomingMessage } from 'next/dist/server/request-meta';
+import { prisma } from './prisma';
 
 export type Browser = {
   id: string;
@@ -14,6 +15,14 @@ export const track = async (req: NextIncomingMessage) => {
   const browser = getBrowserFromRequest(req);
 
   if (!geo || !browser) return;
+
+  await prisma.request.create({
+    data: {
+      ip,
+      geo: { ...geo },
+      browser,
+    },
+  });
 };
 
 export const getBrowserFromRequest = (req: NextIncomingMessage) => {

@@ -1,0 +1,19 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Request {
+  id      String   @id @default(cuid())
+  ip      String
+  geo     Json
+  browser Json
+  created DateTime @default(now())
+
+  @@map("requests")
+}
