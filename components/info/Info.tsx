@@ -1,4 +1,5 @@
-import { Config, Region } from '@/lib/config';
+import { Config } from '@/lib/config';
+import { Region } from '@/lib/regions';
 import React, { FC } from 'react';
 
 interface Props {

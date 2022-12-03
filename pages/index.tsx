@@ -1,16 +1,11 @@
 import Head from 'next/head';
 import Map from '@/components/map/Map';
 import { GetServerSideProps } from 'next';
-import {
-  getPolicyRegionId,
-  getRegion,
-  getConfig,
-  Config,
-  Region,
-} from '@/lib/config';
+import { getPolicyRegionId, getRegion, getConfig, Config } from '@/lib/config';
 import Header from '@/components/header/Header';
 import Info from '@/components/info/Info';
-import { Browser, track } from '@/lib/analytics';
+import { track } from '@/lib/analytics';
+import { Region } from '@/lib/regions';
 
 interface Props {
   config: Config;

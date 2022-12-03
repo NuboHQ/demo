@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { motion } from 'framer-motion';
 import World from './World';
-import { Config, Region, Regions } from '@/lib/config';
+import { Config } from '@/lib/config';
+import { Region } from '@/lib/regions';
 import classNames from 'classnames';
 
 interface Props {

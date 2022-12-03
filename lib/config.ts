@@ -1,5 +1,5 @@
-import { readFileSync } from 'fs';
 import { prisma } from './prisma';
+import { Regions } from './regions';
 
 export type Config = {
   id: string;
@@ -11,16 +11,6 @@ export type Policy = {
   id: string;
   name: string;
 };
-
-export type Region = {
-  id: string;
-  location: string;
-  country: string;
-  flag: string;
-  active: boolean;
-};
-
-export type Regions = { [id: Region['id']]: Region };
 
 export const getConfig = async () => {
   const config = await prisma.config.findFirst({
