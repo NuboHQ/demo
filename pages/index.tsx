@@ -10,6 +10,7 @@ import {
 } from '@/lib/config';
 import Header from '@/components/header/Header';
 import Info from '@/components/info/Info';
+import { Browser, track } from '@/lib/analytics';
 
 interface Props {
   config: NuboConfig;
@@ -37,7 +38,7 @@ export default function Home({ config, currentRegion }: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  console.log(req.headers);
+  track(req);
   const config = loadConfig();
   const id = getPolicyRegionId();
   const currentRegion = getRegion(id);
