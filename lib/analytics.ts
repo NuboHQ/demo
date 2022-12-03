@@ -1,7 +1,7 @@
-import { lookup } from 'geoip-lite';
 import { faUserAgent } from 'fontawesome-user-agent';
 import { NextIncomingMessage } from 'next/dist/server/request-meta';
 import { prisma } from './prisma';
+import { lookup } from 'geoip-country';
 
 export type Browser = {
   id: string;
@@ -16,7 +16,6 @@ export const track = async (req: NextIncomingMessage) => {
   const geo = getGeoFromIp(ip);
   console.log({ geo });
   const browser = getBrowserFromRequest(req);
-  console.log({ geo });
   console.log('=========');
 
   if (!geo || !browser) return;
@@ -52,7 +51,6 @@ export const getBrowserFromRequest = (req: NextIncomingMessage) => {
 };
 
 export const getIpFromRequest = (req: NextIncomingMessage) => {
-  console.log({ headers: req.headers });
   const xForwardedFor =
     (req.headers['x-forwarded-for'] as string) || '88.98.203.209';
 
