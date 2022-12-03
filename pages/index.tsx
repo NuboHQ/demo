@@ -36,7 +36,8 @@ export default function Home({ config, currentRegion }: Props) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  console.log(req.headers);
   const config = loadConfig();
   const id = getPolicyRegionId();
   const currentRegion = getRegion(id);
