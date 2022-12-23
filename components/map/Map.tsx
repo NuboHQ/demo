@@ -1,19 +1,16 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import World from './World';
-import { Config } from '@/lib/config';
-import { Region } from '@/lib/regions';
 import classNames from 'classnames';
 
 interface Props {
   className?: string;
-  config: Config;
-  currentRegion: Region;
+  currentRegion: string;
 }
 
-const Map: FC<Props> = ({ className, config, currentRegion }) => {
+const Map: FC<Props> = ({ className, currentRegion }) => {
   const getRegionProps = (id: string) => {
     const className = classNames('');
-    const stroke = id === currentRegion.id ? '#00A4FF' : '#4E5064';
+    const stroke = id === currentRegion ? '#00A4FF' : '#4E5064';
 
     return {
       className,
@@ -38,7 +35,7 @@ const Map: FC<Props> = ({ className, config, currentRegion }) => {
               cy="136.548"
               r="6.25106"
               strokeWidth="3.75064"
-              {...getRegionProps('us-west-california')}
+              {...getRegionProps('us-west-san-francisco')}
             />
           </g>
           <g id="virginia">
@@ -47,7 +44,7 @@ const Map: FC<Props> = ({ className, config, currentRegion }) => {
               cy="117.906"
               r="6.25106"
               strokeWidth="3.75064"
-              {...getRegionProps('us-west-virginia')}
+              {...getRegionProps('us-east-new-york')}
             />
           </g>
           <g id="sao-paulo">

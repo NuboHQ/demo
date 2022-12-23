@@ -1,18 +1,16 @@
 import Head from 'next/head';
 import Map from '@/components/map/Map';
 import { GetServerSideProps } from 'next';
-import { getPolicyRegionId, getRegion, getConfig, Config } from '@/lib/config';
 import Header from '@/components/header/Header';
 import Info from '@/components/info/Info';
-import { track } from '@/lib/analytics';
 import { Region } from '@/lib/regions';
+import { getRegion } from '@/lib/config';
 
 interface Props {
-  config: Config;
-  currentRegion: Region;
+  currentRegion: string;
 }
 
-export default function Home({ config, currentRegion }: Props) {
+export default function Home({ currentRegion }: Props) {
   return (
     <>
       <Head>
@@ -25,24 +23,19 @@ export default function Home({ config, currentRegion }: Props) {
 
       <Map
         className="top-32 pt-20 lg:fixed lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 w-full"
-        config={config}
         currentRegion={currentRegion}
       />
 
-      <Info config={config} region={currentRegion} />
+      <Info regionId={currentRegion} />
     </>
   );
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  track(req);
-  const config = await getConfig();
-  const id = getPolicyRegionId(config);
-  const currentRegion = getRegion(config, id);
+  const currentRegion = process.env.NUBO_REGION;
 
   return {
     props: {
-      config,
       currentRegion,
     },
   };

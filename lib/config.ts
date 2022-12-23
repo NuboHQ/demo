@@ -34,7 +34,7 @@ export const getPolicyRegionId = (config: Config) => {
   }
 
   if (config.policy.id === 'ccpa') {
-    return 'us-west-california';
+    return 'us-west-san-francisco';
   }
 
   if (config.policy.id === 'lgpd') {

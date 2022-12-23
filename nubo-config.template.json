@@ -5,16 +5,16 @@
     "name": "General Data Protection Regulation"
   },
   "regions": {
-    "us-west-california": {
-      "id": "us-west-california",
+    "us-west-san-francisco": {
+      "id": "us-west-san-francisco",
       "location": "California",
       "country": "United States",
       "flag": "US",
       "active": true
     },
-    "us-east-virginia": {
-      "id": "us-west-virginia",
-      "location": "Virginia",
+    "us-east-new-york": {
+      "id": "us-east-new-york",
+      "location": "New York",
       "country": "United States",
       "flag": "US",
       "active": true

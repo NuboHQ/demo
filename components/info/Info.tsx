@@ -1,14 +1,13 @@
-import { Config } from '@/lib/config';
-import { Region } from '@/lib/regions';
-import React, { FC } from 'react';
+import { getRegion } from '@/lib/regions';
+import { FC } from 'react';
 
 interface Props {
-  config: Config;
-  region: Region;
+  regionId: string;
 }
 
-const Info: FC<Props> = ({ config, region }) => {
-  const flag = `/flags/${region.flag}.svg`;
+const Info: FC<Props> = ({ regionId }) => {
+  const region = getRegion(regionId);
+  const flag = `/flags/${region.country}.svg`;
 
   return (
     <div className="m-auto my-10 lg:my-0 lg:fixed lg:left-1/2 lg:bottom-10 lg:-translate-x-1/2 w-4/5 max-w-4xl border border-slate-800 rounded-2xl divide-x text-white backdrop-blur-lg">
@@ -23,22 +22,9 @@ const Info: FC<Props> = ({ config, region }) => {
               Closest edge server
             </div>
 
-            <div className="text-lg lg:text-2xl">
-              {region.location}, {region.country}
-            </div>
+            <div className="text-lg lg:text-2xl">{region.location}</div>
           </div>
         </div>
-
-        {config.policy.id !== 'all' && (
-          <div className="grid gap-2 p-10">
-            <div className="uppercase text-xs text-slate-500">
-              Policy applied
-            </div>
-            <div>
-              {config.policy.name} ({config.policy.id.toUpperCase()})
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
